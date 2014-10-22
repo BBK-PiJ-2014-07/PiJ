@@ -2,20 +2,24 @@
 	public class Till implements PersonQueue{
 		private Person queueHead;
 		private Person queueTail;
+		private String tillName;
 
-		public Till(){
+		public Till(String s){
 			queueHead = null;
+			tillName = s;
 		}
 
 		public void insert(Person newPerson){
 			if (queueHead == null) {
 				queueHead = newPerson;
 				queueTail = newPerson;
+				System.out.print(newPerson.name + " has joined the queue in " + this.tillName + "\n");
 
 			} else { 
 				queueTail.prev = newPerson;
 				newPerson.next = queueTail;
 				queueTail = newPerson;
+				System.out.print(newPerson.name + " has joined the queue in " + this.tillName + "\n");
 			}
 		}
 		public Person retrieve(){
@@ -28,10 +32,13 @@
 					queueTail = null;
 				}
 				queueHead = queueHead.prev;
+				System.out.println(result.name + " has been served!");
 				return result; 
 		} else {
 			return null;
 		}
 
 	}
+
+
 }

@@ -48,23 +48,35 @@ public class TreeIntSet implements IntSet {
 	}
 
 	public boolean containsVerbose(int n) {
+	    System.out.print(this.value + ", ");
 		if (n == this.value) {
-			System.out.print(this.value + ", ");
 			return true;
 		} else if (n > this.value) {
 			if (right == null) {
-				return false;
+			return false;
 			} else {
-				return right.contains(n);
+				return right.containsVerbose(n);
+
 			}
 		} else {
 			if (left == null) {
 				return false;
 			} else {
-				return left.contains(n);
+				return left.containsVerbose(n);
 			}
 		}
 		
+	}
+
+	public String toString() {
+		String result = this.value + ", ";
+		if (left != null) {
+			result = result + left.toString();
+		}
+		if (right != null) {
+			result = result + right.toString();
+		}
+		return result;
 	}
 
 }

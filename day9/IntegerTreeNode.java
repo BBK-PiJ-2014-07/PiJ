@@ -1,0 +1,64 @@
+public class IntegerTreeNode {
+	int value;
+	IntegerTreeNode left;
+	IntegerTreeNode right;
+
+	public IntegerTreeNode(int value, IntegerTreeNode left, IntegerTreeNode right) {
+		this.value = value;
+		left = null;
+		right = null;
+		}
+
+	public void add(int newNumber) {
+		if (newNumber > this.value) {
+			if (right == null) {
+				right = new IntegerTreeNode(newNumber);
+			} else {
+				right.add(newNumber);
+			}
+		} else {
+			if (left == null) {
+				left = new IntegerTreeNode(newNumber);
+			} else {
+				left.add(newNumber);
+			}
+		}
+	}
+
+	public boolean contains(int n) {
+		if (n == this.value) {
+			return true;
+		} else if (n > this.value) {
+			if (right == null) {
+				return false;
+			} else {
+				return right.contains(n);
+			}
+		} else {
+			if (left == null) {
+				return false;
+			} else {
+				return left.contains(n);
+			}
+		}
+	}
+
+	public integer getMax() {
+		if (right == null) {
+			return this.value;
+		} else {
+			return right.getMax();
+		}
+
+	}
+
+	public integer getMin() {
+		if (left == null) {
+			return this.value;
+		} else {
+			return left.getMin();
+		}
+		}
+	}
+
+}	

@@ -3,7 +3,7 @@ public class IntegerTreeNode {
 	IntegerTreeNode left;
 	IntegerTreeNode right;
 
-	public IntegerTreeNode(int value, IntegerTreeNode left, IntegerTreeNode right) {
+	public IntegerTreeNode(int value) {
 		this.value = value;
 		left = null;
 		right = null;
@@ -43,7 +43,7 @@ public class IntegerTreeNode {
 		}
 	}
 
-	public integer getMax() {
+	public int getMax() {
 		if (right == null) {
 			return this.value;
 		} else {
@@ -52,13 +52,40 @@ public class IntegerTreeNode {
 
 	}
 
-	public integer getMin() {
+	public int getMin() {
 		if (left == null) {
 			return this.value;
 		} else {
 			return left.getMin();
 		}
-		}
+		
 	}
+
+	public String toString() {
+		String result = "[" + this.value + " L";
+		if (left == null) {
+			result = result + "[] R";
+		} else {
+			result = result + left.toString() + " R";
+		}
+		if (right == null) {
+			result = result + "[]]";
+		} else {
+			result = result + right.toString() + "]";
+		}
+		return result;
+	}
+
+	public int depth() {
+		int result = 1;
+		if (left != null) {
+			result = result + left.depth();
+		}
+		if (right != null) {
+			result = result + right.depth();
+		}
+		return result;
+	}
+
 
 }	

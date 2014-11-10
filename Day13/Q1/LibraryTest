@@ -1,2 +1,31 @@
 import org.junit.*;
 import static org.junit.Assert.*;
+
+public class LibraryTest {
+
+	@Test
+	public void testGetName() {
+	Library lib = new Library("Library");
+	assertEquals(lib.getName(),"Library");
+	}
+
+	@Test
+	public void testGetMaxBooks(){
+	Library lib = new Library("Library");
+	assertEquals(lib.getMaxBooks(),0);
+	}
+
+	@Test
+	public void testSetMaxBooks() {
+	Library lib = new Library("Library");
+	lib.setMaxBooks(4);
+	assertEquals(lib.getMaxBooks(),4)
+	}
+
+	@Test
+	public void testGetId(){
+	Library lib = new Library("Library");
+	assertEquals(lib.getId("John"), 10);
+	}
+
+}

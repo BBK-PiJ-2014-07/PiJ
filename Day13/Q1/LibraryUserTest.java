@@ -4,29 +4,21 @@ import static org.junit.Assert.*;
 public class LibraryUserTest  {
 	@Test
 	public void testGetId(){
-		LibraryUser user1 = new LibraryUser("John");
+		User user1 = new LibraryUser("John");
 		assertEquals(user1.getId(),0);
 	}
 
 	@Test
 	public void testGetName(){
-		LibraryUser user1 = new LibraryUser("John");
+		User user1 = new LibraryUser("John");
 		assertEquals(user1.getName(),"John");
 	}
 
 	@Test
-	public void testSetId(){
-		LibraryUser user1 = new LibraryUser("John");
-		user1.setId(1234);
-		assertEquals(user1.getId(),1234);
+	public void testBorrow() {
+		User user1 = new LibraryUser("John");
+		Book b1 = new BookImpl("Austen", "Emma");
+		user1.borrowBook(b1);
+		assertEquals(user1.getBorrowedList().size(),1);
 	}
-
-	@Test
-	public void testGetLibrary(){
-		Library lib = new Library();
-		LibraryUser user1 = new LibraryUser("John");
-		user1.register(lib);
-		assertEquals(user1.getLibrary(), lib);
-	}
-
 }

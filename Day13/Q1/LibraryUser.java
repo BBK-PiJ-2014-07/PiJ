@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class LibraryUser implements User {
 	private String name;
 	private int id;
@@ -33,16 +35,16 @@ public class LibraryUser implements User {
 		return library;
 	}
 
-	public void borrow(Book book){
+	public void borrowBook(Book book){
 		booksBorrowed.add(book);
 	}
 
-	public void return(Book book){
+	public void returnBook(Book book){
 		booksBorrowed.remove(book);
 	}
 
 	public ArrayList<String> getBorrowedList(){
-		ArrayList<String> bookList = new ArrayList<String>;
+		ArrayList<String> bookList = new ArrayList<String>();
 		for (Book b: booksBorrowed){
 			bookList.add(b.getTitle());
 		}

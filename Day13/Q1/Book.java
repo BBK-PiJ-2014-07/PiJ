@@ -4,4 +4,8 @@ public interface Book {
 
 	String getTitle();
 	//returns the title of the book
+
+	boolean isTaken();
+
+	void setTaken(boolean status);
 }

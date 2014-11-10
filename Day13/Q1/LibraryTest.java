@@ -18,8 +18,25 @@ public class LibraryTest {
 	@Test
 	public void testSetMaxBooks() {
 		Library lib = new LibraryImpl("Library");
-		lib.setMaxBooks(4);
-		assertEquals(lib.getMaxBooks(),4);
+		LibraryUser lu1 = new LibraryUser("Jane");
+		lu1.register(lib);
+		LibraryUser lu2 = new LibraryUser("Bob");
+		lu2.register(lib);
+		LibraryUser lu3 = new LibraryUser("Sarah");
+		lu3.register(lib);
+		Book b1 = new BookImpl("Emma", "Austen");
+		Book b2 = new BookImpl("Ulysses", "Joyce");
+		Book b3 = new BookImpl("Harry Potter", "Rowling");
+		Book b4 = new BookImpl("Cinderella", "Grimm");
+		Book b5 = new BookImpl("The Bible", "God");
+		Book b6 = new BookImpl("The God Delusion", "Dawkins");
+		lu2.borrowBook(b1);
+		lu2.borrowBook(b2);
+		lu2.borrowBook(b3);
+		lu1.borrowBook(b4);
+		lu3.borrowBook(b5);
+		lu3.borrowBook(b6);
+		assertEquals(lib.setMaxBooks(2).size(),1);
 	}
 
 	@Test

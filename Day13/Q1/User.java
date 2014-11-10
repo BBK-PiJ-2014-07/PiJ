@@ -7,6 +7,8 @@ public interface User {
 
 	void register(Library library);
 
+	Library getLibrary();
+
 	void borrowBook(Book book);
 
 	void returnBook(Book book);

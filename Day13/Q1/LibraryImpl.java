@@ -21,8 +21,9 @@ public class LibraryImpl implements Library {
 		return libraryName;
 	}
 
-	public void setMaxBooks(int number){
+	public ArrayList<User> setMaxBooks(int number){
 		maxBooks = number;
+		return new ArrayList<User>();
 	}
 
 	public int getMaxBooks() {
@@ -57,6 +58,7 @@ public class LibraryImpl implements Library {
 			if (b.getTitle() == title) {
 				if (!b.isTaken()){
 					b.setTaken(true);
+					
 				} else {
 					System.out.println("Book is already taken");
 				}

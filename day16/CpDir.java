@@ -1,8 +1,8 @@
 import java.io.*;
 
-import java.io.*;
+import java.util.Arrays;
 
-public class Cp {
+public class CpDir {
 
 /** 
 ** Checks whether the target file already exists,
@@ -58,22 +58,33 @@ public class Cp {
 	}
 
 	public static void main(String[] args) {
-		Cp copier = new Cp();
-		File oldFile = new File(args[0]);
-		File newFile = new File(args[1]);
+		CpDir copier = new CpDir();
+		File dir = new File(args[args.length-1]);
+		//copy all the input filenames to an array
+		String[] filesToCopy = new String[args.length-1];
+		for (int i=0; i<args.length-1; i++) {
+			filesToCopy[i] = args[i];
+		}
+		
 
-		copier.launch(oldFile, newFile);
+		copier.launch(dir, filesToCopy);
 	}
 
-	public void launch(File oldFile, File newFile){
-		if (newFile.exists()){
-			overwrite(oldFile, newFile);
-		} else {
-			try {
-				newFile.createNewFile();
-				copy(oldFile, newFile);
-			} catch (IOException ex){
-				ex.printStackTrace();
+	public void launch(File dir, String[] filesToCopy){
+		for (String filename : filesToCopy) {
+
+			File oldFile = new File(filename);
+			File newFile = new File(dir + "/" + filename);
+
+			if (newFile.exists()){
+				overwrite(oldFile, newFile);
+			} else {
+				try {
+					newFile.createNewFile();
+					copy(oldFile, newFile);
+				} catch (IOException ex){
+					ex.printStackTrace();
+				}
 			}
 		}
 	}

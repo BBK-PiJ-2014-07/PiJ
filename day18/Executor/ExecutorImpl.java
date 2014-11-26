@@ -20,11 +20,14 @@ public class ExecutorImpl implements Executor {
 	**
 	** @param command - the runnable task
 	**/
-	public synchronized void execute(Runnable r){
+	public void execute(Runnable r){
 		//add the task to the queue
 		mgr.addTask(r);
 		//t.run();
 	}
 
+	public int getQueueSize(){
+		return mgr.getQueueSize();
+	}
 	
 }

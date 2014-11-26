@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class ExecutorImpl implements Executor {
-	private Runnable mgr;
+	private TaskManager mgr;
 	
 	public ExecutorImpl(){
 		mgr = new TaskManager();
@@ -26,8 +26,5 @@ public class ExecutorImpl implements Executor {
 		//t.run();
 	}
 
-	public int getMaxPendingTime(){
-		return taskQueue.size()*1000;
-	}
 	
 }

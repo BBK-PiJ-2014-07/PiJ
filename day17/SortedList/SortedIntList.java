@@ -1,59 +1,59 @@
 public class SortedIntList {
 	private SortedIntListNode head; 
+	private int listSize;
 
 	public SortedIntList(){
-		sentinel = null;
+		head = null;
+		listSize = 0;
+
 	}
 
 	public void makeHead(SortedIntListNode node) {
-		sentinel = node;
+		head = node;
+		head.setHeadNode();
 	}
 
 	public void add(int value) {
+		SortedIntListNode newNode = new SortedIntListNode(value);
 		if (head == null){
-			makeHead(new SortedIntListNode(value));
+			makeHead(newNode);
 		} else {
-			head.addAtEnd(value);
+			head.addAtEnd(newNode);
 		}
+		newNode.setNext(head);
+		listSize++;
 	}
 
 	public int size(){
-		return count(head);
-	}
-
-	public int count(SortedIntListNode node){
-		if (node != null) {
-			return 1 + count(node.getNext());
-		} else {
-			return 0;
-		}
+		return listSize;
 	}
 
 	public void sort(SortedIntListNode node){
 		//is this node bigger than the next one? if so, take it out and put it after
 		if (node.getNext() != null ){
-			SortedIntListNode thisNode = node;
 			if (node.getValue() > node.getNext().getValue()) {
+					// if we are sorting the head node and it's bigger
 					if (node.equals(head)){
-						int value = node.getValue();
+						//int value = node.getValue();
+						
 						makeHead(node.getNext());
-						head.addNext(value);
+						head.addNext(node);
 						node = head;
 					} else {
-						thisNode = node.getNext();
-						node.getNext().addNext(node.getPrev().remove());
+						node = node.getNext();
+						node.addNext(node.getPrev().remove());
 						System.out.println("It's larger");
 					}
 					
 					
 				}
-			sort(thisNode.getNext());	
+			sort(node.getNext());	
 			}
 	}
 
 	public void printList(SortedIntListNode node){
 		System.out.println(node.getValue());
-		if (node.getNext() != null) {
+		if (node.getNext() != head) {
 			printList(node.getNext());
 		}
 	}

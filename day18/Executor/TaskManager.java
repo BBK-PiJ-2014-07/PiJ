@@ -12,12 +12,14 @@ public class TaskManager implements Runnable {
 
 	public void run(){
 		//1. Check if task pending
-		while (!taskQueue.isEmpty()){
-		// 2. if yes, run it
-			Runnable nextTask = taskQueue.poll();
-			nextTask.run();
-		//3. if no, repeat
-		}
+			while (true) {
+				while (!taskQueue.isEmpty()){
+				// 2. if yes, run it
+					Runnable nextTask = taskQueue.poll();
+					nextTask.run();
+				//3. if no, repeat
+				}
+			}
 	}
 
 	public void addTask(Runnable task){

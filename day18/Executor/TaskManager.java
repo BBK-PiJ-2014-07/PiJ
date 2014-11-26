@@ -19,5 +19,9 @@ public class TaskManager implements Runnable {
 		}
 	}
 
+	public void addTask(Runnable task){
+		taskQueue.offer(task);
+	}
+
 
 }

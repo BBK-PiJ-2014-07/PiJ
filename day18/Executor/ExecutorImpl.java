@@ -3,11 +3,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class ExecutorImpl implements Executor {
-	private Queue<Runnable> taskQueue;
-	//private Thread t;
 	public ExecutorImpl(){
-		taskQueue = new LinkedList<Runnable>();
-	}
+		Runnable mgr = new TaskManager();
+		}
 // Execute one Runnable at a time; queue of impending tasks.
 
 	/**
@@ -20,7 +18,7 @@ public class ExecutorImpl implements Executor {
 	**/
 	public synchronized void execute(Runnable r){
 		//add the task to the queue
-		this.taskQueue.offer(r);
+		mgr.addTask(r);
 		//t.run();
 	}
 

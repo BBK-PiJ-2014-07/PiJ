@@ -3,8 +3,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class ExecutorImpl implements Executor {
+	private Runnable mgr;
+	
 	public ExecutorImpl(){
-		Runnable mgr = new TaskManager();
+		mgr = new TaskManager();
+		Thread t = new Thread(mgr);
+		t.start();
 		}
 // Execute one Runnable at a time; queue of impending tasks.
 

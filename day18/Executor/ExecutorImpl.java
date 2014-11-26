@@ -30,4 +30,7 @@ public class ExecutorImpl implements Executor {
 		return mgr.getQueueSize() * 1000;
 	}
 	
+	public void shutdownManager(){
+		this.mgr.shutdown();
+	}
 }

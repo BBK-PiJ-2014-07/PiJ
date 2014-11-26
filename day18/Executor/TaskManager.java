@@ -24,5 +24,8 @@ public class TaskManager implements Runnable {
 		this.taskQueue.offer(task);
 	}
 
+	public int getQueueSize(){
+		return taskQueue.size();
+	}
 
 }

@@ -28,7 +28,7 @@ public class TextLoop implements Runnable {
 		} else {
 			for (int i = 0; i < 10; i++) {
 				Runnable r = new TextLoop("Thread " + i);
-				Executor e = new ForkJoinPool();
+				Executor e = new ExecutorImpl();
 				e.execute(r);
 			}
 		}

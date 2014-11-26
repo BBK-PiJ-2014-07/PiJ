@@ -26,8 +26,8 @@ public class ExecutorImpl implements Executor {
 		//t.run();
 	}
 
-	public int getQueueSize(){
-		return mgr.getQueueSize();
+	public int getMaxPendingTime(){
+		return mgr.getQueueSize() * 1000;
 	}
 	
 }
